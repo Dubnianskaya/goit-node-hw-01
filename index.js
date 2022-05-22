@@ -1,5 +1,9 @@
-const contactsOperations = require("./contacts")
-// const argv = require('yargs').argv;
+const contactsOperations = require("./contacts");
+const argv = require('yargs/yargs')(process.argv.slice(2))
+    .option('id', {
+        type: 'string'
+    })
+    .argv
 
 async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
@@ -31,4 +35,4 @@ async function invokeAction({ action, id, name, email, phone }) {
   }
 }
 
-// invokeAction(argv);
+invokeAction(argv);
